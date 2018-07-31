@@ -7,7 +7,7 @@ checks:
     type: cmd
     cmd: systemctl status crond
 actions:
-  restart_sshd:
+  restart_crond:
     execute_from: target
     trigger: 2
     frequency: 300
