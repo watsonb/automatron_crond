@@ -1,0 +1,20 @@
+---
+name: Check crond
+  schedule: "*/2 * * * *"
+  checks:
+    sshd_is_running:
+      execute_from: target
+      type: cmd
+      cmd: systemctl status crond
+  actions:
+    restart_sshd:
+      execute_from: target
+      trigger: 2
+      frequency: 300
+      call_on:
+        - WARNING
+        - CRITICAL
+        - UNKNOWN
+      type: cmd
+      cmd: systemctl restart crond
+...
